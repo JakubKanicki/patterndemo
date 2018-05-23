@@ -15,7 +15,7 @@ class Engine:
             self.core.input()
             self.core.update()
             self.core.render()
-            self.clock.tick(60)     # sync to 60 fps
+            self.clock.tick(30)     # sync to 30 fps
         self.core.clean_up()
 
     def shutdown(self):

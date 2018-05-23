@@ -9,7 +9,6 @@ class GuiBase:
         self.buttons = []
 
     def input(self):
-
         for i in range(3):
             if mouse_helper.is_fresh_click(i):
                 self.on_click(i)

@@ -12,7 +12,7 @@ class GuiMenu(GuiBase):
     def __init__(self, screen_width, screen_height):
         super(GuiMenu, self).__init__(screen_width, screen_height)
         theme = ColorTheme((70, 80, 42), (100, 100, 100), hover=(40, 210, 20, 120))
-        labels = ['Hello!', 'How', 'are', 'you?']
+        labels = ['Hello!', 'How can', 'I help?', 'Exit']
         for i in range(4):
             self.buttons.append(ButtonText(i, pygame.Rect(screen_width/2-120, 100 + 80*i, 240, 60), labels[i], theme))
 
