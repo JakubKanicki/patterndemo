@@ -9,14 +9,15 @@ class GuiBase:
         self.buttons = []
 
     def input(self):
-        fresh_clicks = mouse_helper.get_fresh_clicks()
-        if fresh_clicks:
-            self.on_click(fresh_clicks)
 
-            for button in self.buttons:
-                if button.check_mouse():
-                    self.button_clicked(button, fresh_clicks)
-                    break
+        for i in range(3):
+            if mouse_helper.is_fresh_click(i):
+                self.on_click(i)
+
+                for button in self.buttons:
+                    if button.check_mouse():
+                        self.button_clicked(button, i)
+                        break
 
     def render(self, screen):
         self.render_label(screen)
@@ -28,10 +29,10 @@ class GuiBase:
         if hover:
             hover.render_hover(screen)
 
-    def on_click(self, fresh_clicks):
+    def on_click(self, mouse_click):
         pass
 
-    def button_clicked(self, button, fresh_clicks):
+    def button_clicked(self, button, mouse_click):
         pass
 
     def render_label(self, screen):

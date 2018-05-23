@@ -1,5 +1,6 @@
 import pygame
 
+import event
 from gui import fonts
 from gui.button_text import ButtonText
 from gui.color_theme import ColorTheme
@@ -15,8 +16,10 @@ class GuiMenu(GuiBase):
         for i in range(4):
             self.buttons.append(ButtonText(i, pygame.Rect(screen_width/2-120, 100 + 80*i, 240, 60), labels[i], theme))
 
-    def button_clicked(self, button, fresh_clicks):
-        button.text = '%i, %s' % (button.get_id(), fresh_clicks)
+    def button_clicked(self, button, mouse_click):
+        button.text = '%s, %s' % (button.get_id(), mouse_click)
+        if button.get_id() is 3:
+            event.trigger_event(event.SHUTDOWN)
 
     def render_label(self, screen):
         rect = pygame.Rect(0, 0, self.screen_width, 100)
