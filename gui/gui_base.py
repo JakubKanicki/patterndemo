@@ -16,6 +16,7 @@ class GuiBase:
             for button in self.buttons:
                 if button.check_mouse():
                     self.button_clicked(button, fresh_clicks)
+                    break
 
     def render(self, screen):
         self.render_label(screen)

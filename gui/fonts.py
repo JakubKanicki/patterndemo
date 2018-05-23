@@ -1,6 +1,5 @@
 import pygame
 
-
 loaded_fonts = {}
 
 

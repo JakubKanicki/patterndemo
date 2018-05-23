@@ -11,10 +11,9 @@ class GuiMenu(GuiBase):
     def __init__(self, screen_width, screen_height):
         super(GuiMenu, self).__init__(screen_width, screen_height)
         theme = ColorTheme((70, 80, 42), (100, 100, 100), hover=(40, 210, 20, 120))
-        self.buttons.append(ButtonText(pygame.Rect(screen_width/2-120, 100, 240, 60), 'Hello!', theme))
-        self.buttons.append(ButtonText(pygame.Rect(screen_width/2-120, 180, 240, 60), 'How', theme))
-        self.buttons.append(ButtonText(pygame.Rect(screen_width/2-120, 240, 240, 60), 'are', theme))
-        self.buttons.append(ButtonText(pygame.Rect(screen_width/2-120, 300, 240, 60), 'you?', theme))
+        labels = ['Hello!', 'How', 'are', 'you?']
+        for i in range(4):
+            self.buttons.append(ButtonText(pygame.Rect(screen_width/2-120, 100 + 80*i, 240, 60), labels[i], theme))
 
     def button_clicked(self, button, fresh_clicks):
         button.text = str(fresh_clicks)
