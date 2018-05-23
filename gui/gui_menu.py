@@ -13,10 +13,10 @@ class GuiMenu(GuiBase):
         theme = ColorTheme((70, 80, 42), (100, 100, 100), hover=(40, 210, 20, 120))
         labels = ['Hello!', 'How', 'are', 'you?']
         for i in range(4):
-            self.buttons.append(ButtonText(pygame.Rect(screen_width/2-120, 100 + 80*i, 240, 60), labels[i], theme))
+            self.buttons.append(ButtonText(i, pygame.Rect(screen_width/2-120, 100 + 80*i, 240, 60), labels[i], theme))
 
     def button_clicked(self, button, fresh_clicks):
-        button.text = str(fresh_clicks)
+        button.text = '%i, %s' % (button.get_id(), fresh_clicks)
 
     def render_label(self, screen):
         rect = pygame.Rect(0, 0, self.screen_width, 100)

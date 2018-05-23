@@ -7,8 +7,8 @@ from gui import fonts
 
 class ButtonText(Button):
 
-    def __init__(self, rect, text, theme):
-        super(ButtonText, self).__init__(rect)
+    def __init__(self, id, rect, text, theme):
+        super(ButtonText, self).__init__(id, rect)
         self.text = text
         self.theme = theme
 

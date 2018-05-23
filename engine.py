@@ -4,12 +4,11 @@ import pygame
 class Engine:
 
     def __init__(self, core):
-        self.running = True
         self.core = core
         self.clock = pygame.time.Clock()
 
     def run(self):
-        while self.running:
+        while self.core.running:
             self.core.input()
             self.core.update()
             self.core.render()

@@ -1,21 +1,20 @@
 import pygame
+import rendering
 from gui.gui_menu import GuiMenu
 
 
 class Core:
 
     def __init__(self):
-        pygame.init()
-        self.screen_size = (640, 420)
         self.clear_color = (43, 134, 234)
-        self.screen = pygame.display.set_mode(self.screen_size)
-        pygame.display.set_caption('*title text here*')
-        self.gui = GuiMenu(*self.screen_size)
+        self.screen = rendering.setup_window((640, 420), '*title text here*')
+        self.gui = GuiMenu(*self.screen.get_size())
+        self.running = True
 
     def input(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                raise StopAsyncIteration
+                self.running = False
         self.gui.input()
 
     def update(self):
