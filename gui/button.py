@@ -4,11 +4,11 @@ import pygame
 class Button:
 
     def __init__(self, id, rect: pygame.Rect):
-        self.id = id
-        self.rect = rect
+        self.__id = id
+        self.__rect = rect
 
     def check_mouse(self):
-        return self.rect.collidepoint(pygame.mouse.get_pos())
+        return self.__rect.collidepoint(pygame.mouse.get_pos())
 
     def render(self, screen):
         pass
@@ -17,7 +17,7 @@ class Button:
         pass
 
     def get_id(self):
-        return self.id
+        return self.__id
 
     def get_rect(self):
-        return self.rect
+        return self.__rect

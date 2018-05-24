@@ -3,8 +3,8 @@ import pygame
 
 def setup_window(screen_size, title):
     pygame.init()
-    screen = pygame.display.set_mode(screen_size)
     pygame.display.set_caption(title)
+    screen = pygame.display.set_mode(screen_size)
     return screen
 
 
