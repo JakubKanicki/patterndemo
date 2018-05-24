@@ -6,14 +6,14 @@ class DatabaseMongo:
     def __init__(self, ip, port):
         self.conn = pymongo.MongoClient(ip, port)
 
-    def add_note(self, name):
-        self.conn.todo.notes.insert_one({'name': name})
+    def add_note(self, type, data):
+        return self.conn.todo.notes.insert_one({'type': type, 'data': data}).inserted_id
 
-    def update_note(self, name, new_name):
-        self.conn.todo.notes.update_one({'name': name}, {'$set': {'name': new_name}})
+    def update_note(self, id, data):
+        self.conn.todo.notes.update_one({'_id': id}, {'$set': {'data': data}})
 
-    def get_note(self, name):
-        return self.conn.todo.notes.find_one({'name': name})
+    def get_note(self, id):
+        return self.conn.todo.notes.find_one({'_id': id})
 
     def get_all_notes(self):
         return self.conn.todo.notes.find()
