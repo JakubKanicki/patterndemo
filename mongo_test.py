@@ -1,5 +1,6 @@
 import pymongo
 from database.database_mongo import DatabaseMongo
+from note.note_simple import NoteSimple
 
 
 def main():
@@ -7,9 +8,9 @@ def main():
 
     db = DatabaseMongo('localhost', 27017)
 
-    find = db.add_note('note', {'name': 'hangout', 'desc': 'Just hang out'})
+    db.add_note('note', {'name': 'hangout', 'desc': 'Just hang out'})
     mod = db.add_note('reminder', {'name': 'Remember!', 'desc': 'Eat shower', 'date': '12018'})
-    db.add_note('check', {'name': 'Eat', 'what': 'self'})
+    db.add_note('check', {'name': 'Eat', 'what': 'a grue'})
 
     for nt in db.get_all_notes():
         print(nt)
@@ -20,8 +21,16 @@ def main():
 
     db.update_note(mod, {'name': note_data})
 
+    note = NoteSimple('Walk the cat')
+    id = db.add_note(note.get_type(), note.get_data())
+
     for nt in db.get_all_notes():
         print(nt)
+
+    note_temp = db.get_note(id)
+    notte = NoteSimple()
+    notte.set_data(note_temp['data'])
+    print(str(notte))
 
     db.drop_database_lol()
 
