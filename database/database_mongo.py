@@ -18,5 +18,5 @@ class DatabaseMongo:
     def get_all_notes(self):
         return self.conn.todo.notes.find()
 
-    def drop_database_lol(self):
+    def drop_database(self):
         self.conn.drop_database('todo')

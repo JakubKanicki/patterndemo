@@ -15,4 +15,9 @@ class NoteBase:
 
     @staticmethod
     def construct_note(note_data):
-        return None     # TODO
+        id = note_data['id']
+        type = note_data['type']
+        data = note_data['data']
+
+        # TODO
+
