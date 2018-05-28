@@ -12,17 +12,17 @@ def main():
     dbc = DatabaseMongo('localhost', 27017)
 
     dbc.add_note('note', {'name': 'hangout', 'desc': 'Just hang out'})
-    mod = dbc.add_note('date', {'text': 'Eat shower', 'date': '12018'})
+    mod_id = dbc.add_note('date', {'name': 'Remember!', 'text': 'Eat shower', 'date': '12018'})
     dbc.add_note('check', {'name': 'Eat', 'what': 'a grue'})
 
     for nt in dbc.get_all_notes():
         print(nt)
     print()
 
-    note_data = dbc.get_note(mod)['data']
-    note_data['text'] = 'Order a rift'; note_data['date'] = '27.05.2018'
-
-    dbc.update_note(mod, note_data)
+    note = note_builder.construct_note(dbc.get_note(mod_id))
+    note.set_text('Order a rift')
+    note.set_date('27.05.2018')
+    note_writer.write_note(dbc, note)
 
     notes = []
     notes.append(NoteSimple(text='Walk the cat.'))
@@ -33,6 +33,7 @@ def main():
 
     for nt in dbc.get_all_notes():
         print(nt)
+    print()
 
     notes = []
     note_data = dbc.get_all_notes()
