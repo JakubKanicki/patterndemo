@@ -14,5 +14,8 @@ class NoteBase:
     def get_type(self):
         return self.type
 
+    def set_id(self, id):
+        self.id = id
+
     def get_id(self):
         return self.id

@@ -1,6 +1,8 @@
 import pymongo
+
 from database.database_mongo import DatabaseMongo
 from note import note_builder
+from note import note_writer
 from note.note_simple import NoteSimple
 
 
@@ -23,14 +25,12 @@ def main():
     dbc.update_note(mod, {'name': note_data})
 
     note = NoteSimple(text='Walk the cat.')
-    id = dbc.add_note(note.get_type(), note.get_data())
+    note_writer.write_note(dbc, note)
 
     for nt in dbc.get_all_notes():
         print(nt)
 
-    note_entry = dbc.get_note(id)
-    # note_test = NoteSimple()
-    # note_test.set_data(note_entry['data'])
+    note_entry = dbc.get_note(note.get_id())
     note_test = note_builder.construct_note(note_entry)
     print(str(note_test))
 
