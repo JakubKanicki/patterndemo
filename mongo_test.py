@@ -12,7 +12,7 @@ def main():
     dbc = DatabaseMongo('localhost', 27017)
 
     dbc.add_note('note', {'name': 'hangout', 'desc': 'Just hang out'})
-    mod = dbc.add_note('reminder', {'name': 'Remember!', 'desc': 'Eat shower', 'date': '12018'})
+    mod = dbc.add_note('date', {'text': 'Eat shower', 'date': '12018'})
     dbc.add_note('check', {'name': 'Eat', 'what': 'a grue'})
 
     for nt in dbc.get_all_notes():
@@ -20,19 +20,29 @@ def main():
     print()
 
     note_data = dbc.get_note(mod)['data']
-    note_data['desc'] = 'Order a rift'; note_data['date'] = '27.05.2018'
+    note_data['text'] = 'Order a rift'; note_data['date'] = '27.05.2018'
 
-    dbc.update_note(mod, {'name': note_data})
+    dbc.update_note(mod, note_data)
 
-    note = NoteSimple(text='Walk the cat.')
-    note_writer.write_note(dbc, note)
+    notes = []
+    notes.append(NoteSimple(text='Walk the cat.'))
+    notes.append(NoteSimple(text='Feed the dog.'))
+    notes.append(NoteSimple(text='Pet the parrot.'))
+    for note in notes:
+        note_writer.write_note(dbc, note)
 
     for nt in dbc.get_all_notes():
         print(nt)
 
-    note_entry = dbc.get_note(note.get_id())
-    note_test = note_builder.construct_note(note_entry)
-    print(str(note_test))
+    notes = []
+    note_data = dbc.get_all_notes()
+    for data in note_data:
+        note = note_builder.construct_note(data)
+        if note:
+            notes.append(note)
+
+    for note in notes:
+        print(note)
 
     dbc.drop_database()
 

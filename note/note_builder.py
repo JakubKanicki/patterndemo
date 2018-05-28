@@ -1,8 +1,9 @@
+from note.note_date import NoteDate
 from note.note_simple import NoteSimple
 
-
 note_classes = {
-    'simple': NoteSimple
+    'simple': NoteSimple,
+    'date': NoteDate
 }
 
 

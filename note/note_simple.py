@@ -4,7 +4,7 @@ from note.note_base import NoteBase
 class NoteSimple(NoteBase):
 
     def __init__(self, id=None, text=''):
-        super(NoteSimple, self).__init__('simple', id)
+        NoteBase.__init__(self, 'simple', id)
         self.text = text
 
     def set_data(self, data):
