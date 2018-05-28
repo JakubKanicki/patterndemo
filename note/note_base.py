@@ -1,11 +1,9 @@
 
 class NoteBase:
 
-    def __init__(self, type):
+    def __init__(self, type, id):
         self.type = type
-
-    def get_type(self):
-        return self.type
+        self.id = id
 
     def set_data(self, data):
         pass
@@ -13,11 +11,8 @@ class NoteBase:
     def get_data(self):
         pass
 
-    @staticmethod
-    def construct_note(note_data):
-        id = note_data['id']
-        type = note_data['type']
-        data = note_data['data']
+    def get_type(self):
+        return self.type
 
-        # TODO
-
+    def get_id(self):
+        return self.id
