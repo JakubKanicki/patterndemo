@@ -2,27 +2,27 @@
 class NoteBase:
 
     def __init__(self, type, id):
-        self._type = type
-        self._id = id
-        self._is_dirty = id is None
+        self.__type = type
+        self.__id = id
+        self.__is_dirty = id is None
 
     def set_data(self, data):
-        pass
+        raise NotImplementedError
 
     def get_data(self):
-        pass
+        raise NotImplementedError
 
     def get_type(self):
-        return self._type
+        return self.__type
 
     def set_id(self, id):
-        self._id = id
+        self.__id = id
 
     def get_id(self):
-        return self._id
+        return self.__id
 
     def mark_clean(self):
-        self._is_dirty = False
+        self.__is_dirty = False
 
     def is_dirty(self):
-        return self._is_dirty
+        return self.__is_dirty

@@ -4,7 +4,7 @@ from note.note_base import NoteBase
 class NoteDate(NoteBase):
 
     def __init__(self, id=None, text='', date=''):
-        NoteBase.__init__(self, 'date', id)
+        NoteBase.__init__(self, NoteDate.__name__, id)
         self._text = text
         self._date = date
 

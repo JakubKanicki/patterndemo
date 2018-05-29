@@ -13,7 +13,7 @@ def main():
     dbc = DatabaseMongo('localhost', 27017)
 
     dbc.add_note('note', {'name': 'hangout', 'desc': 'Just hang out'})
-    mod_id = dbc.add_note('date', {'name': 'Remember!', 'text': 'Eat shower', 'date': '12018'})
+    mod_id = dbc.add_note('NoteDate', {'name': 'Remember!', 'text': 'Eat shower', 'date': '12018'})
     dbc.add_note('check', {'name': 'Eat', 'what': 'a grue'})
 
     for nt in dbc.get_all_notes():
