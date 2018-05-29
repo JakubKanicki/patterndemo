@@ -3,6 +3,7 @@ import pymongo
 from database.database_mongo import DatabaseMongo
 from note import note_builder
 from note import note_writer
+from note.note_date import NoteDate
 from note.note_simple import NoteSimple
 
 
@@ -24,10 +25,13 @@ def main():
     note.set_date('27.05.2018')
     note_writer.write_note(dbc, note)
 
-    notes = []
-    notes.append(NoteSimple(text='Walk the cat.'))
-    notes.append(NoteSimple(text='Feed the dog.'))
-    notes.append(NoteSimple(text='Pet the parrot.'))
+    notes = [
+        NoteSimple(text='Walk the cat.'),
+        NoteSimple(text='Feed the dog.'),
+        NoteDate(text='Receive the rift', date='30.05.2018'),
+        NoteSimple(text='Pet the parrot.'),
+    ]
+
     for note in notes:
         note_writer.write_note(dbc, note)
 

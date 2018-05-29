@@ -16,6 +16,8 @@ class Core:
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
                 event.trigger_event(event.SHUTDOWN)
+            elif ev.type == pygame.KEYDOWN:
+                self.gui.key(ev)
         self.gui.input()
 
     def update(self):

@@ -28,6 +28,9 @@ class GuiBase:
         if hover:
             hover.render_hover(screen)
 
+    def key(self, event):
+        pass
+
     def on_click(self, mouse_click):
         pass
 

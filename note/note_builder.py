@@ -3,7 +3,7 @@ from note.note_simple import NoteSimple
 
 note_classes = {
     'simple': NoteSimple,
-    'date': NoteDate
+    'date': NoteDate,
 }
 
 
