@@ -11,7 +11,7 @@ from gui.text_field import TextField
 class GuiMenu(GuiBase):
     
     def __init__(self, screen_width, screen_height):
-        super(GuiMenu, self).__init__(screen_width, screen_height)
+        GuiBase.__init__(self, screen_width, screen_height)
         theme = ColorTheme((70, 80, 42), (100, 100, 100), hover=(40, 210, 20, 120))
         labels = ['Hello!', 'How can', 'I help?', 'Exit']
         for i in range(4):

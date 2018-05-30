@@ -1,8 +1,8 @@
 import pygame
-import rendering
 
-from gui.button import Button
+import rendering
 from gui import fonts
+from gui.button import Button
 
 
 class ButtonText(Button):
